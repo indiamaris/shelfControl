@@ -1,5 +1,5 @@
 import UserList from "@components/users/all-users"
-import { getUsers } from "@lib/users/get-users"
+import { getUsers } from "@services/users/get-users"
 
 export default async function UsersPage() {
   const users = await getUsers()

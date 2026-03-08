@@ -24,6 +24,7 @@
       "@app/*": ["app/*"],
       "@components/*": ["components/*"],
       "@lib/*": ["lib/*"],
+      "@services/*": ["services/*"],
       "@prisma/*": ["prisma/*"],
       "@generated/*": ["generated/*"]
     }
@@ -33,7 +34,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
   "exclude": ["node_modules"]

@@ -1,26 +1,20 @@
-import { prisma } from "@lib/prisma"
 import { NextResponse } from "next/server"
+import { createUser } from "@services/users/create-user"
+import { listUsers } from "@services/users/list-users"
 
 export async function POST(req: Request) {
   const body = await req.json()
 
-  const user = await prisma.user.create({
-    data: {
-      name: body.name,
-      email: body.email
-    }
+  const user = await createUser({
+    name: body.name,
+    email: body.email,
   })
 
   return NextResponse.json(user)
 }
 
 export async function GET() {
+  const users = await listUsers()
 
-    const users = await prisma.user.findMany({
-      include: {
-        books: true
-      }
-    })
-  
-    return NextResponse.json(users)
-  }
+  return NextResponse.json(users)
+}
