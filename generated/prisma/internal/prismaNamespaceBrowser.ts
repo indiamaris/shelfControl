@@ -106,7 +106,8 @@ export type ShelfItemScalarFieldEnum = (typeof ShelfItemScalarFieldEnum)[keyof t
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  email: 'email'
+  email: 'email',
+  isAdmin: 'isAdmin'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]

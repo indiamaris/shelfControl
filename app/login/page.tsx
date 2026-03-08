@@ -1,4 +1,3 @@
-import NavCard from "@components/ui/nav-card"
 import PageShell from "@components/ui/page-shell"
 
 export default function LoginPage() {
