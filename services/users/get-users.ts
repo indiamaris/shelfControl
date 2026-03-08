@@ -62,6 +62,16 @@ function buildShelfColumns(
   )
 }
 
+function buildShelfQuoteCount(
+  shelfItems: Array<{
+    book: {
+      quotes: Array<{ id: number }>
+    }
+  }>,
+) {
+  return shelfItems.reduce((total, item) => total + item.book.quotes.length, 0)
+}
+
 export async function getUsers() {
   const users = await userRepository.findAllWithShelfItems()
 
@@ -72,5 +82,6 @@ export async function getUsers() {
     isAdmin: user.isAdmin,
     shelfSummary: buildShelfSummary(user.shelfItems),
     shelfColumns: buildShelfColumns(user.shelfItems),
+    quoteCount: buildShelfQuoteCount(user.shelfItems),
   }))
 }

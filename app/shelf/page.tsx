@@ -11,8 +11,6 @@ export default async function ShelfPage() {
       eyebrow="Shelf Overview"
       title="Julian's shelf"
       description=""
-      backHref="/login"
-      backLabel="Back to dashboard"
     >
       <div className="space-y-8">
         {users.length ? (
@@ -21,6 +19,7 @@ export default async function ShelfPage() {
               <UserShelfBoard
                 key={user.id}
                 userId={user.id}
+                quoteCount={user.quoteCount}
                 shelfColumns={user.shelfColumns}
               />
             ))}

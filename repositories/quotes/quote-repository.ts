@@ -37,6 +37,34 @@ export const quoteRepository = {
     })
   },
 
+  findAllByUserShelf(userId: number) {
+    return prisma.quote.findMany({
+      select: {
+        id: true,
+        text: true,
+        character: true,
+        book: {
+          select: {
+            id: true,
+            title: true,
+          },
+        },
+      },
+      where: {
+        book: {
+          shelfItems: {
+            some: {
+              userId,
+            },
+          },
+        },
+      },
+      orderBy: {
+        id: "asc",
+      },
+    })
+  },
+
   findById(id: number) {
     return prisma.quote.findUnique({
       where: { id },

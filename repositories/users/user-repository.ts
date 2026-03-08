@@ -24,7 +24,15 @@ export const userRepository = {
       include: {
         shelfItems: {
           include: {
-            book: true,
+            book: {
+              include: {
+                quotes: {
+                  select: {
+                    id: true,
+                  },
+                },
+              },
+            },
           },
         },
       },
