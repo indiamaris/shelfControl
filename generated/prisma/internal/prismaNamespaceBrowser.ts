@@ -76,7 +76,8 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const BookScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  author: 'author'
+  author: 'author',
+  price: 'price'
 } as const
 
 export type BookScalarFieldEnum = (typeof BookScalarFieldEnum)[keyof typeof BookScalarFieldEnum]

@@ -28,56 +28,66 @@ export type AggregateBook = {
 
 export type BookAvgAggregateOutputType = {
   id: number | null
+  price: runtime.Decimal | null
 }
 
 export type BookSumAggregateOutputType = {
   id: number | null
+  price: runtime.Decimal | null
 }
 
 export type BookMinAggregateOutputType = {
   id: number | null
   title: string | null
   author: string | null
+  price: runtime.Decimal | null
 }
 
 export type BookMaxAggregateOutputType = {
   id: number | null
   title: string | null
   author: string | null
+  price: runtime.Decimal | null
 }
 
 export type BookCountAggregateOutputType = {
   id: number
   title: number
   author: number
+  price: number
   _all: number
 }
 
 
 export type BookAvgAggregateInputType = {
   id?: true
+  price?: true
 }
 
 export type BookSumAggregateInputType = {
   id?: true
+  price?: true
 }
 
 export type BookMinAggregateInputType = {
   id?: true
   title?: true
   author?: true
+  price?: true
 }
 
 export type BookMaxAggregateInputType = {
   id?: true
   title?: true
   author?: true
+  price?: true
 }
 
 export type BookCountAggregateInputType = {
   id?: true
   title?: true
   author?: true
+  price?: true
   _all?: true
 }
 
@@ -171,6 +181,7 @@ export type BookGroupByOutputType = {
   id: number
   title: string
   author: string
+  price: runtime.Decimal
   _count: BookCountAggregateOutputType | null
   _avg: BookAvgAggregateOutputType | null
   _sum: BookSumAggregateOutputType | null
@@ -200,6 +211,7 @@ export type BookWhereInput = {
   id?: Prisma.IntFilter<"Book"> | number
   title?: Prisma.StringFilter<"Book"> | string
   author?: Prisma.StringFilter<"Book"> | string
+  price?: Prisma.DecimalFilter<"Book"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   quotes?: Prisma.QuoteListRelationFilter
   shelfItems?: Prisma.ShelfItemListRelationFilter
 }
@@ -208,6 +220,7 @@ export type BookOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   author?: Prisma.SortOrder
+  price?: Prisma.SortOrder
   quotes?: Prisma.QuoteOrderByRelationAggregateInput
   shelfItems?: Prisma.ShelfItemOrderByRelationAggregateInput
 }
@@ -219,6 +232,7 @@ export type BookWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.BookWhereInput | Prisma.BookWhereInput[]
   title?: Prisma.StringFilter<"Book"> | string
   author?: Prisma.StringFilter<"Book"> | string
+  price?: Prisma.DecimalFilter<"Book"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   quotes?: Prisma.QuoteListRelationFilter
   shelfItems?: Prisma.ShelfItemListRelationFilter
 }, "id">
@@ -227,6 +241,7 @@ export type BookOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   author?: Prisma.SortOrder
+  price?: Prisma.SortOrder
   _count?: Prisma.BookCountOrderByAggregateInput
   _avg?: Prisma.BookAvgOrderByAggregateInput
   _max?: Prisma.BookMaxOrderByAggregateInput
@@ -241,11 +256,13 @@ export type BookScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Book"> | number
   title?: Prisma.StringWithAggregatesFilter<"Book"> | string
   author?: Prisma.StringWithAggregatesFilter<"Book"> | string
+  price?: Prisma.DecimalWithAggregatesFilter<"Book"> | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type BookCreateInput = {
   title: string
   author: string
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   quotes?: Prisma.QuoteCreateNestedManyWithoutBookInput
   shelfItems?: Prisma.ShelfItemCreateNestedManyWithoutBookInput
 }
@@ -254,6 +271,7 @@ export type BookUncheckedCreateInput = {
   id?: number
   title: string
   author: string
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutBookInput
   shelfItems?: Prisma.ShelfItemUncheckedCreateNestedManyWithoutBookInput
 }
@@ -261,6 +279,7 @@ export type BookUncheckedCreateInput = {
 export type BookUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   author?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   quotes?: Prisma.QuoteUpdateManyWithoutBookNestedInput
   shelfItems?: Prisma.ShelfItemUpdateManyWithoutBookNestedInput
 }
@@ -269,6 +288,7 @@ export type BookUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   author?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   quotes?: Prisma.QuoteUncheckedUpdateManyWithoutBookNestedInput
   shelfItems?: Prisma.ShelfItemUncheckedUpdateManyWithoutBookNestedInput
 }
@@ -277,43 +297,51 @@ export type BookCreateManyInput = {
   id?: number
   title: string
   author: string
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type BookUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   author?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type BookUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   author?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type BookCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   author?: Prisma.SortOrder
+  price?: Prisma.SortOrder
 }
 
 export type BookAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  price?: Prisma.SortOrder
 }
 
 export type BookMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   author?: Prisma.SortOrder
+  price?: Prisma.SortOrder
 }
 
 export type BookMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   author?: Prisma.SortOrder
+  price?: Prisma.SortOrder
 }
 
 export type BookSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  price?: Prisma.SortOrder
 }
 
 export type BookScalarRelationFilter = {
@@ -323,6 +351,14 @@ export type BookScalarRelationFilter = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type DecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -364,6 +400,7 @@ export type BookUpdateOneRequiredWithoutShelfItemsNestedInput = {
 export type BookCreateWithoutQuotesInput = {
   title: string
   author: string
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   shelfItems?: Prisma.ShelfItemCreateNestedManyWithoutBookInput
 }
 
@@ -371,6 +408,7 @@ export type BookUncheckedCreateWithoutQuotesInput = {
   id?: number
   title: string
   author: string
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   shelfItems?: Prisma.ShelfItemUncheckedCreateNestedManyWithoutBookInput
 }
 
@@ -393,6 +431,7 @@ export type BookUpdateToOneWithWhereWithoutQuotesInput = {
 export type BookUpdateWithoutQuotesInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   author?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   shelfItems?: Prisma.ShelfItemUpdateManyWithoutBookNestedInput
 }
 
@@ -400,12 +439,14 @@ export type BookUncheckedUpdateWithoutQuotesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   author?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   shelfItems?: Prisma.ShelfItemUncheckedUpdateManyWithoutBookNestedInput
 }
 
 export type BookCreateWithoutShelfItemsInput = {
   title: string
   author: string
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   quotes?: Prisma.QuoteCreateNestedManyWithoutBookInput
 }
 
@@ -413,6 +454,7 @@ export type BookUncheckedCreateWithoutShelfItemsInput = {
   id?: number
   title: string
   author: string
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
   quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutBookInput
 }
 
@@ -435,6 +477,7 @@ export type BookUpdateToOneWithWhereWithoutShelfItemsInput = {
 export type BookUpdateWithoutShelfItemsInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   author?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   quotes?: Prisma.QuoteUpdateManyWithoutBookNestedInput
 }
 
@@ -442,6 +485,7 @@ export type BookUncheckedUpdateWithoutShelfItemsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   author?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   quotes?: Prisma.QuoteUncheckedUpdateManyWithoutBookNestedInput
 }
 
@@ -489,6 +533,7 @@ export type BookSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   id?: boolean
   title?: boolean
   author?: boolean
+  price?: boolean
   quotes?: boolean | Prisma.Book$quotesArgs<ExtArgs>
   shelfItems?: boolean | Prisma.Book$shelfItemsArgs<ExtArgs>
   _count?: boolean | Prisma.BookCountOutputTypeDefaultArgs<ExtArgs>
@@ -498,21 +543,24 @@ export type BookSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   title?: boolean
   author?: boolean
+  price?: boolean
 }, ExtArgs["result"]["book"]>
 
 export type BookSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
   author?: boolean
+  price?: boolean
 }, ExtArgs["result"]["book"]>
 
 export type BookSelectScalar = {
   id?: boolean
   title?: boolean
   author?: boolean
+  price?: boolean
 }
 
-export type BookOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "author", ExtArgs["result"]["book"]>
+export type BookOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "author" | "price", ExtArgs["result"]["book"]>
 export type BookInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   quotes?: boolean | Prisma.Book$quotesArgs<ExtArgs>
   shelfItems?: boolean | Prisma.Book$shelfItemsArgs<ExtArgs>
@@ -531,6 +579,7 @@ export type $BookPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     id: number
     title: string
     author: string
+    price: runtime.Decimal
   }, ExtArgs["result"]["book"]>
   composites: {}
 }
@@ -959,6 +1008,7 @@ export interface BookFieldRefs {
   readonly id: Prisma.FieldRef<"Book", 'Int'>
   readonly title: Prisma.FieldRef<"Book", 'String'>
   readonly author: Prisma.FieldRef<"Book", 'String'>
+  readonly price: Prisma.FieldRef<"Book", 'Decimal'>
 }
     
 

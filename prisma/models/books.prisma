@@ -2,6 +2,7 @@ model Book {
   id         Int         @id @default(autoincrement())
   title      String
   author     String
+  price      Decimal
   quotes     Quote[]
   shelfItems ShelfItem[]
 }
