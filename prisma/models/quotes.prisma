@@ -1,0 +1,7 @@
+model Quote {
+  id        Int    @id @default(autoincrement())
+  text      String
+  character String
+  bookId    Int
+  book      Book   @relation(fields: [bookId], references: [id])
+}
