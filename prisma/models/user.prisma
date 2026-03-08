@@ -2,6 +2,14 @@ model User {
   id         Int         @id @default(autoincrement())
   name       String
   email      String      @unique
-  isAdmin    Boolean     @default(false)
+  password   String?
+  role       Role        @default(USER)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
   shelfItems ShelfItem[]
+}
+
+enum Role {
+  USER
+  ADMIN
 }

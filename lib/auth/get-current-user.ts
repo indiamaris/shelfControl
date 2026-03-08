@@ -1,14 +1,15 @@
-import { cookies } from "next/headers"
+import { getServerSession } from "next-auth"
 
+import { authOptions } from "@lib/auth/auth-options"
 import { userRepository } from "@repositories/users/user-repository"
 
 export async function getCurrentUser() {
-  const cookieStore = await cookies()
-  const currentUserId = Number(cookieStore.get("current-user-id")?.value)
+  const session = await getServerSession(authOptions)
+  const email = session?.user?.email
 
-  if (!Number.isInteger(currentUserId) || currentUserId <= 0) {
+  if (!email) {
     return null
   }
 
-  return userRepository.findById(currentUserId)
+  return userRepository.findByEmail(email)
 }

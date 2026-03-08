@@ -12,6 +12,7 @@ export const userRepository = {
         id: true,
         name: true,
         email: true,
+        role: true,
       },
       orderBy: {
         name: "asc",
@@ -21,7 +22,11 @@ export const userRepository = {
 
   findAllWithShelfItems() {
     return prisma.user.findMany({
-      include: {
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
         shelfItems: {
           include: {
             book: {
@@ -45,6 +50,12 @@ export const userRepository = {
   findById(id: number) {
     return prisma.user.findUnique({
       where: { id },
+    })
+  },
+
+  findByEmail(email: string) {
+    return prisma.user.findUnique({
+      where: { email },
     })
   },
 

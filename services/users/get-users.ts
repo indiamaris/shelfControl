@@ -79,7 +79,7 @@ export async function getUsers() {
     id: user.id,
     name: user.name,
     email: user.email,
-    isAdmin: user.isAdmin,
+    isAdmin: user.role === "ADMIN",
     shelfSummary: buildShelfSummary(user.shelfItems),
     shelfColumns: buildShelfColumns(user.shelfItems),
     quoteCount: buildShelfQuoteCount(user.shelfItems),
