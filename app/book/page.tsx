@@ -2,7 +2,7 @@ import PageShell from "@components/ui/page-shell"
 import BookList from "@components/books/all-books"
 import { getBooks } from "@services/books/get-books"
 
-export default async function BooksPage() {
+export default async function BookPage() {
   const books = await getBooks()
 
   return (

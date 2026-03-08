@@ -12,6 +12,7 @@ export const bookRepository = {
         id: true,
         title: true,
         author: true,
+        price: true,
       },
       orderBy: {
         title: "asc",

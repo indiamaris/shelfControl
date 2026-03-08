@@ -1,6 +1,7 @@
 import Link from "next/link"
 import type { ReactNode } from "react"
 
+import AdminUsersLink from "@components/ui/admin-users-link"
 import PageHeader from "@components/ui/page-header"
 
 type PageShellProps = {
@@ -38,7 +39,10 @@ export default function PageShell({
             ) : (
               <span />
             )}
-            {actions ? <div className="flex items-center gap-3">{actions}</div> : null}
+            <div className="flex items-center gap-3">
+              <AdminUsersLink />
+              {actions}
+            </div>
           </div>
 
           <PageHeader eyebrow={eyebrow} title={title} description={description} />
