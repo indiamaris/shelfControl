@@ -6,9 +6,16 @@ type CreateUserInput = {
 }
 
 export async function createUser(data: CreateUserInput) {
-  if (!data.email) {
+  if (!data.name || !data.name.trim()) {
+    throw new Error("Name required")
+  }
+
+  if (!data.email || !data.email.trim()) {
     throw new Error("Email required")
   }
 
-  return userRepository.create(data)
+  return userRepository.create({
+    name: data.name.trim(),
+    email: data.email.trim(),
+  })
 }
