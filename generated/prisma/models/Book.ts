@@ -301,16 +301,6 @@ export type BookUncheckedUpdateManyInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type BookListRelationFilter = {
-  every?: Prisma.BookWhereInput
-  some?: Prisma.BookWhereInput
-  none?: Prisma.BookWhereInput
-}
-
-export type BookOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
-}
-
 export type BookCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
@@ -340,6 +330,28 @@ export type BookMinOrderByAggregateInput = {
 export type BookSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+}
+
+export type BookListRelationFilter = {
+  every?: Prisma.BookWhereInput
+  some?: Prisma.BookWhereInput
+  none?: Prisma.BookWhereInput
+}
+
+export type BookOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type StringFieldUpdateOperationsInput = {
+  set?: string
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type BookCreateNestedManyWithoutUserInput = {
