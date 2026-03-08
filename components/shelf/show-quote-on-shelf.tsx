@@ -5,7 +5,7 @@ export default function ShowQuoteOnShelf() {
 
       <div className="relative space-y-5 pl-4 sm:pl-6">
         <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-secondary)]">
-          Shelf highlight
+          Quote of the day
         </p>
 
         <blockquote className="max-w-4xl text-2xl leading-10 font-medium tracking-tight text-[var(--color-primary)] sm:text-3xl">
