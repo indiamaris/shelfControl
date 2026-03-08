@@ -3,7 +3,6 @@ import { bookRepository } from "@repositories/books/book-repository"
 type CreateBookInput = {
   title: string
   author: string
-  userId: number
 }
 
 export async function createBook(data: CreateBookInput) {

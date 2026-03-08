@@ -28,6 +28,11 @@ export type Book = Prisma.BookModel
  */
 export type Quote = Prisma.QuoteModel
 /**
+ * Model ShelfItem
+ * 
+ */
+export type ShelfItem = Prisma.ShelfItemModel
+/**
  * Model User
  * 
  */

@@ -10,5 +10,6 @@
  */
 export type * from './models/Book'
 export type * from './models/Quote'
+export type * from './models/ShelfItem'
 export type * from './models/User'
 export type * from './commonInputTypes'

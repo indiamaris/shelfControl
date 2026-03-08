@@ -8,7 +8,6 @@ export async function POST(req: Request) {
   const book = await createBook({
     title: body.title,
     author: body.author,
-    userId: body.userId,
   })
 
   return NextResponse.json(book)

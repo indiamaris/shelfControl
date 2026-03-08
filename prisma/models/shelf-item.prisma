@@ -1,0 +1,12 @@
+model ShelfItem {
+  id     Int    @id @default(autoincrement())
+  status String
+  userId Int
+  bookId Int
+
+  user User @relation(fields: [userId], references: [id])
+  book Book @relation(fields: [bookId], references: [id])
+
+  @@unique([userId, bookId])
+  @@index([userId, status])
+}

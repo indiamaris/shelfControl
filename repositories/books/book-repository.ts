@@ -3,7 +3,6 @@ import { prisma } from "@lib/prisma"
 type CreateBookInput = {
   title: string
   author: string
-  userId: number
 }
 
 export const bookRepository = {
@@ -20,10 +19,14 @@ export const bookRepository = {
     })
   },
 
-  findAllWithUser() {
+  findAllWithShelfItems() {
     return prisma.book.findMany({
       include: {
-        user: true,
+        shelfItems: {
+          include: {
+            user: true,
+          },
+        },
       },
       orderBy: {
         title: "asc",

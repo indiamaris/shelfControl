@@ -386,6 +386,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   Book: 'Book',
   Quote: 'Quote',
+  ShelfItem: 'ShelfItem',
   User: 'User'
 } as const
 
@@ -402,7 +403,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "book" | "quote" | "user"
+    modelProps: "book" | "quote" | "shelfItem" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -554,6 +555,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ShelfItem: {
+      payload: Prisma.$ShelfItemPayload<ExtArgs>
+      fields: Prisma.ShelfItemFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ShelfItemFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShelfItemPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ShelfItemFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShelfItemPayload>
+        }
+        findFirst: {
+          args: Prisma.ShelfItemFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShelfItemPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ShelfItemFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShelfItemPayload>
+        }
+        findMany: {
+          args: Prisma.ShelfItemFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShelfItemPayload>[]
+        }
+        create: {
+          args: Prisma.ShelfItemCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShelfItemPayload>
+        }
+        createMany: {
+          args: Prisma.ShelfItemCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ShelfItemCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShelfItemPayload>[]
+        }
+        delete: {
+          args: Prisma.ShelfItemDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShelfItemPayload>
+        }
+        update: {
+          args: Prisma.ShelfItemUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShelfItemPayload>
+        }
+        deleteMany: {
+          args: Prisma.ShelfItemDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ShelfItemUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ShelfItemUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShelfItemPayload>[]
+        }
+        upsert: {
+          args: Prisma.ShelfItemUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShelfItemPayload>
+        }
+        aggregate: {
+          args: Prisma.ShelfItemAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateShelfItem>
+        }
+        groupBy: {
+          args: Prisma.ShelfItemGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ShelfItemGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ShelfItemCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ShelfItemCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -670,8 +745,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const BookScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  author: 'author',
-  userId: 'userId'
+  author: 'author'
 } as const
 
 export type BookScalarFieldEnum = (typeof BookScalarFieldEnum)[keyof typeof BookScalarFieldEnum]
@@ -685,6 +759,16 @@ export const QuoteScalarFieldEnum = {
 } as const
 
 export type QuoteScalarFieldEnum = (typeof QuoteScalarFieldEnum)[keyof typeof QuoteScalarFieldEnum]
+
+
+export const ShelfItemScalarFieldEnum = {
+  id: 'id',
+  status: 'status',
+  userId: 'userId',
+  bookId: 'bookId'
+} as const
+
+export type ShelfItemScalarFieldEnum = (typeof ShelfItemScalarFieldEnum)[keyof typeof ShelfItemScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
@@ -710,14 +794,6 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 
@@ -864,6 +940,7 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   book?: Prisma.BookOmit
   quote?: Prisma.QuoteOmit
+  shelfItem?: Prisma.ShelfItemOmit
   user?: Prisma.UserOmit
 }
 

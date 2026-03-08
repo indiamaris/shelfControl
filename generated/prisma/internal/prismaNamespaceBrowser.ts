@@ -53,6 +53,7 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   Book: 'Book',
   Quote: 'Quote',
+  ShelfItem: 'ShelfItem',
   User: 'User'
 } as const
 
@@ -75,8 +76,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const BookScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  author: 'author',
-  userId: 'userId'
+  author: 'author'
 } as const
 
 export type BookScalarFieldEnum = (typeof BookScalarFieldEnum)[keyof typeof BookScalarFieldEnum]
@@ -90,6 +90,16 @@ export const QuoteScalarFieldEnum = {
 } as const
 
 export type QuoteScalarFieldEnum = (typeof QuoteScalarFieldEnum)[keyof typeof QuoteScalarFieldEnum]
+
+
+export const ShelfItemScalarFieldEnum = {
+  id: 'id',
+  status: 'status',
+  userId: 'userId',
+  bookId: 'bookId'
+} as const
+
+export type ShelfItemScalarFieldEnum = (typeof ShelfItemScalarFieldEnum)[keyof typeof ShelfItemScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
@@ -115,12 +125,4 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

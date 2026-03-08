@@ -19,10 +19,14 @@ export const userRepository = {
     })
   },
 
-  findAllWithBooks() {
+  findAllWithShelfItems() {
     return prisma.user.findMany({
       include: {
-        books: true,
+        shelfItems: {
+          include: {
+            book: true,
+          },
+        },
       },
       orderBy: {
         name: "asc",
