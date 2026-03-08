@@ -1,14 +1,5 @@
-import { prisma } from "@lib/prisma"
+import { bookRepository } from "@repositories/books/book-repository"
 
 export async function getBooks() {
-  return prisma.book.findMany({
-    select: {
-      id: true,
-      title: true,
-      author: true,
-    },
-    orderBy: {
-      title: "asc",
-    },
-  })
+  return bookRepository.findAll()
 }

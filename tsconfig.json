@@ -36,6 +36,9 @@
       "@lib/*": [
         "lib/*"
       ],
+      "@repositories/*": [
+        "repositories/*"
+      ],
       "@services/*": [
         "services/*"
       ],

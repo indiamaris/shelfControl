@@ -1,4 +1,4 @@
-import { prisma } from "@lib/prisma"
+import { userRepository } from "@repositories/users/user-repository"
 
 type CreateUserInput = {
   name: string
@@ -6,7 +6,9 @@ type CreateUserInput = {
 }
 
 export async function createUser(data: CreateUserInput) {
-  return prisma.user.create({
-    data,
-  })
+  if (!data.email) {
+    throw new Error("Email required")
+  }
+
+  return userRepository.create(data)
 }
