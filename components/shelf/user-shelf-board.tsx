@@ -1,7 +1,6 @@
 import ShelfCard from "@components/shelf/shelf-card"
 
 type UserShelfBoardProps = {
-  userId: number
   quoteCount: number
   shelfColumns: {
     read: Array<unknown>
@@ -12,7 +11,6 @@ type UserShelfBoardProps = {
 }
 
 export default function UserShelfBoard({
-  userId,
   quoteCount,
   shelfColumns,
 }: UserShelfBoardProps) {
@@ -22,27 +20,27 @@ export default function UserShelfBoard({
         <ShelfCard
           title="Read"
           count={shelfColumns.read.length}
-          href={`/shelf/${userId}/read`}
+          href="/shelf/read"
         />
         <ShelfCard
           title="Reading"
           count={shelfColumns.reading.length}
-          href={`/shelf/${userId}/reading`}
+          href="/shelf/reading"
         />
         <ShelfCard
           title="TBR"
           count={shelfColumns.toBeRead.length}
-          href={`/shelf/${userId}/to-be-read`}
+          href="/shelf/to-be-read"
         />
         <ShelfCard
           title="Abandoned"
           count={shelfColumns.abandoned.length}
-          href={`/shelf/${userId}/abandoned`}
+          href="/shelf/abandoned"
         />
         <ShelfCard
           title="Quotes"
           count={quoteCount}
-          href={`/shelf/${userId}/quotes`}
+          href="/shelf/quotes"
         />
       </div>
 

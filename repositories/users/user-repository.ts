@@ -53,6 +53,31 @@ export const userRepository = {
     })
   },
 
+  findByIdWithShelfItems(id: number) {
+    return prisma.user.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
+        shelfItems: {
+          include: {
+            book: {
+              include: {
+                quotes: {
+                  select: {
+                    id: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    })
+  },
+
   findByEmail(email: string) {
     return prisma.user.findUnique({
       where: { email },
