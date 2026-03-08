@@ -31,6 +31,37 @@ function buildShelfSummary(
   )
 }
 
+function buildShelfColumns(
+  shelfItems: Array<{
+    status: string
+    book: {
+      id: number
+      title: string
+      author: string
+      price: { toString(): string }
+    }
+  }>,
+) {
+  return shelfStatuses.reduce(
+    (columns, status) => {
+      columns[status] = shelfItems
+        .filter((item) => item.status === status)
+        .map((item) => ({
+          id: item.book.id,
+          title: item.book.title,
+          author: item.book.author,
+          price: item.book.price.toString(),
+        }))
+
+      return columns
+    },
+    {} as Record<
+      ShelfStatus,
+      Array<{ id: number; title: string; author: string; price: string }>
+    >,
+  )
+}
+
 export async function getUsers() {
   const users = await userRepository.findAllWithShelfItems()
 
@@ -40,5 +71,6 @@ export async function getUsers() {
     email: user.email,
     isAdmin: user.isAdmin,
     shelfSummary: buildShelfSummary(user.shelfItems),
+    shelfColumns: buildShelfColumns(user.shelfItems),
   }))
 }

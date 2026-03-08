@@ -1,30 +1,36 @@
-import NavCard from "@components/ui/nav-card"
+import UserShelfBoard from "@components/shelf/user-shelf-board"
 import PageShell from "@components/ui/page-shell"
+import { getUsers } from "@services/users/get-users"
 
-export default function Home() {
+export default async function ShelfPage() {
+  const users = await getUsers()
+
   return (
     <PageShell
-      eyebrow="Shelf Control"
-      title="Your reading hub"
-      description="Manage readers, books, and memorable quotes with a clean interface designed for both light and dark mode."
+      eyebrow="Shelf Overview"
+      title="Julian's shelf"
+      description=""
+      backHref="/login"
+      backLabel="Back to dashboard"
     >
-      <section className="grid gap-5 md:grid-cols-3">
-        <NavCard
-          href="/users"
-          title="Users"
-          description="Browse readers and prepare each personal shelf."
-        />
-        <NavCard
-          href="/books"
-          title="Books"
-          description="Explore the catalog and keep your library organized."
-        />
-        <NavCard
-          href="/quotes"
-          title="Quotes"
-          description="Review highlighted passages linked to each book."
-        />
-      </section>
+      {users.length ? (
+        <section className="grid gap-6">
+          {users.map((user) => (
+            <UserShelfBoard
+              key={user.id}
+              userId={user.id}
+              name={user.name}
+              email={user.email}
+              isAdmin={user.isAdmin}
+              shelfColumns={user.shelfColumns}
+            />
+          ))}
+        </section>
+      ) : (
+        <div className="rounded-[24px] border border-dashed border-[var(--color-surface-border)] bg-[var(--color-surface)] p-8 text-center text-[var(--color-muted)] shadow-[0_10px_35px_var(--color-shadow)]">
+          No shelves available yet.
+        </div>
+      )}
     </PageShell>
   )
 }
