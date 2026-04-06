@@ -1,13 +1,26 @@
 import ShelfCard from "@components/shelf/shelf-card"
 
+type ShelfBook = {
+  id: number
+  title: string
+  author: string
+  price: string
+}
+
 type UserShelfBoardProps = {
   quoteCount: number
   shelfColumns: {
-    read: Array<unknown>
-    reading: Array<unknown>
-    toBeRead: Array<unknown>
-    abandoned: Array<unknown>
+    read: Array<ShelfBook>
+    reading: Array<ShelfBook>
+    toBeRead: Array<ShelfBook>
+    abandoned: Array<ShelfBook>
   }
+}
+
+function getTotalPrice(books: Array<ShelfBook>) {
+  return books
+    .reduce((total, book) => total + Number.parseFloat(book.price), 0)
+    .toFixed(2)
 }
 
 export default function UserShelfBoard({
@@ -20,21 +33,25 @@ export default function UserShelfBoard({
         <ShelfCard
           title="Read"
           count={shelfColumns.read.length}
+          totalPrice={getTotalPrice(shelfColumns.read)}
           href="/shelf/read"
         />
         <ShelfCard
           title="Reading"
           count={shelfColumns.reading.length}
+          totalPrice={getTotalPrice(shelfColumns.reading)}
           href="/shelf/reading"
         />
         <ShelfCard
           title="TBR"
           count={shelfColumns.toBeRead.length}
+          totalPrice={getTotalPrice(shelfColumns.toBeRead)}
           href="/shelf/to-be-read"
         />
         <ShelfCard
           title="Abandoned"
           count={shelfColumns.abandoned.length}
+          totalPrice={getTotalPrice(shelfColumns.abandoned)}
           href="/shelf/abandoned"
         />
         <ShelfCard

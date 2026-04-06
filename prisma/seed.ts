@@ -93,6 +93,34 @@ async function main() {
         price: "35.50",
       },
     }),
+    prisma.book.create({
+      data: {
+        title: "1984",
+        author: "George Orwell",
+        price: "31.20",
+      },
+    }),
+    prisma.book.create({
+      data: {
+        title: "Beloved",
+        author: "Toni Morrison",
+        price: "37.40",
+      },
+    }),
+    prisma.book.create({
+      data: {
+        title: "Project Hail Mary",
+        author: "Andy Weir",
+        price: "44.90",
+      },
+    }),
+    prisma.book.create({
+      data: {
+        title: "Circe",
+        author: "Madeline Miller",
+        price: "33.80",
+      },
+    }),
   ])
 
   const [
@@ -102,6 +130,10 @@ async function main() {
     prideAndPrejudice,
     theNameOfTheWind,
     leftHandOfDarkness,
+    nineteenEightyFour,
+    beloved,
+    projectHailMary,
+    circe,
   ] = books
 
   await prisma.quote.createMany({
@@ -125,6 +157,26 @@ async function main() {
         text: "Words are pale shadows of forgotten names.",
         character: "Kvothe",
         bookId: theNameOfTheWind.id,
+      },
+      {
+        text: "Big Brother is Watching You.",
+        character: "Party slogan",
+        bookId: nineteenEightyFour.id,
+      },
+      {
+        text: "Freeing yourself was one thing; claiming ownership of that freed self was another.",
+        character: "Sethe",
+        bookId: beloved.id,
+      },
+      {
+        text: "Human beings have a remarkable ability to accept the abnormal and make it normal.",
+        character: "Ryland Grace",
+        bookId: projectHailMary.id,
+      },
+      {
+        text: "But in a solitary life, there are rare moments when another soul dips near yours.",
+        character: "Circe",
+        bookId: circe.id,
       },
     ],
   })
@@ -152,6 +204,16 @@ async function main() {
         status: "abandoned",
       },
       {
+        userId: julian.id,
+        bookId: projectHailMary.id,
+        status: "read",
+      },
+      {
+        userId: julian.id,
+        bookId: circe.id,
+        status: "toBeRead",
+      },
+      {
         userId: mara.id,
         bookId: prideAndPrejudice.id,
         status: "read",
@@ -162,6 +224,21 @@ async function main() {
         status: "reading",
       },
       {
+        userId: mara.id,
+        bookId: theHobbit.id,
+        status: "toBeRead",
+      },
+      {
+        userId: mara.id,
+        bookId: beloved.id,
+        status: "read",
+      },
+      {
+        userId: mara.id,
+        bookId: circe.id,
+        status: "reading",
+      },
+      {
         userId: sam.id,
         bookId: dune.id,
         status: "reading",
@@ -169,6 +246,21 @@ async function main() {
       {
         userId: sam.id,
         bookId: theNameOfTheWind.id,
+        status: "toBeRead",
+      },
+      {
+        userId: sam.id,
+        bookId: theTwoTowers.id,
+        status: "read",
+      },
+      {
+        userId: sam.id,
+        bookId: nineteenEightyFour.id,
+        status: "abandoned",
+      },
+      {
+        userId: sam.id,
+        bookId: projectHailMary.id,
         status: "toBeRead",
       },
     ],
